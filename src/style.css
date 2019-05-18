@@ -5,9 +5,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-button {
+button, input[type="submit"] {
   text-align: center;
   background-color: #004f8c;
   color: #fff;
   border: 0;
+  text-transform: capitalize;
 }

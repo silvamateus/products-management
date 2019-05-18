@@ -2,12 +2,12 @@ import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import ProductsStorage from "./components/productsStorage";
 import ListProducts from "./components/listProducts";
+import Cart from "./components/cart";
 
 const Home = () => (
-  <div>
-    <Link to="/"> Tela inicial </Link>
-    <Link to="/cadastro+de+produtos"> Cadastrar Produtos </Link>
-    <Link to="/products"> Listar produtos </Link>
+    <Link to="/carrinho" className={styles.link}>
+      Carrinho
+    </Link>
   </div>
 );
 

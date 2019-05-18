@@ -1,14 +1,16 @@
 import React from "react";
 import CurrencyInput from "react-currency-input";
 import styles from "./style.css";
+import Tooltip from "../tooltip";
 
-class productsStorage extends React.Component {
+class ProductsStorage extends React.Component {
   constructor() {
     super();
     this.state = {
       name: "",
       price: 0.0,
-      truePrice: 0.0
+      truePrice: 0.0,
+      isVisible: false
     };
   }
   submit = event => {
@@ -21,11 +23,16 @@ class productsStorage extends React.Component {
       price: price
     });
     sessionStorage.setItem("products", JSON.stringify(products));
-    this.setState({
-      name: "",
-      price: 0.0,
-      truePrice: 0.0
-    });
+    const hideTip = () => this.setState({ isVisible: false });
+    this.setState(
+      {
+        name: "",
+        price: 0.0,
+        truePrice: 0.0,
+        isVisible: true
+      },
+      () => window.setTimeout(hideTip, 1000)
+    );
   };
 
   changePrice = (event, maskedvalue, floatvalue) => {
@@ -43,30 +50,37 @@ class productsStorage extends React.Component {
 
   render = () => {
     return (
-      <form onSubmit={this.submit} className={styles.form}>
-        <div className={styles.flexContainer}>
-          <label htmlFor="name">Nome do produto</label>
-          <input
-            id="name"
-            className={styles.input}
-            type="text"
-            value={this.state.name}
-            onChange={this.changeName}
-          />
-          <label htmlFor="currency">Preço</label>
-          <CurrencyInput
-            id="currency"
-            className={styles.input}
-            value={this.state.price}
-            onChangeEvent={this.changePrice}
-            decimalSeparator=","
-            thousandSeparator="."
-            prefix="R$"
-          />
-          <input type="submit" value="adicionar" className={styles.button} />
-        </div>
-      </form>
+      <div>
+        <form onSubmit={this.submit} className={styles.form}>
+          <div className={styles.flexContainer}>
+            <label htmlFor="name">Nome do produto</label>
+            <input
+              id="name"
+              className={styles.input}
+              type="text"
+              value={this.state.name}
+              onChange={this.changeName}
+              required
+            />
+            <label htmlFor="currency">Preço</label>
+            <CurrencyInput
+              id="currency"
+              className={styles.input}
+              value={this.state.price}
+              onChangeEvent={this.changePrice}
+              decimalSeparator=","
+              thousandSeparator="."
+              prefix="R$"
+              required
+            />
+            <input type="submit" value="adicionar" className={styles.button} />
+          </div>
+        </form>
+        <Tooltip isVisible={this.state.isVisible}>
+          Produto salvo com sucesso
+        </Tooltip>
+      </div>
     );
   };
 }
-export default productsStorage;
+export default ProductsStorage;

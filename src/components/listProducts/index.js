@@ -1,12 +1,14 @@
 import React from "react";
 import CurrencyInput from "react-currency-input";
 import styles from "./style.css";
+import Tooltip from "../tooltip";
 
-class listProducts extends React.Component {
+class ListProducts extends React.Component {
   constructor() {
     super();
     this.state = {
-      products: JSON.parse(sessionStorage.getItem("products"))
+      products: JSON.parse(sessionStorage.getItem("products")),
+      isVisible: false
     };
   }
 
@@ -19,6 +21,13 @@ class listProducts extends React.Component {
         id: id
       });
       sessionStorage.setItem("cart", JSON.stringify(cart));
+      const hideTip = () => this.setState({ isVisible: false });
+      this.setState(
+        {
+          isVisible: true
+        },
+        () => window.setTimeout(hideTip, 1000)
+      );
     };
 
     return (
@@ -57,8 +66,11 @@ class listProducts extends React.Component {
             </div>
           );
         })}
+        <Tooltip isVisible={this.state.isVisible}>
+          Produto adicionado ao carrinho
+        </Tooltip>
       </div>
     );
   };
 }
-export default listProducts;
+export default ListProducts;

@@ -21,7 +21,11 @@ class listProducts extends React.Component {
       sessionStorage.setItem("cart", JSON.stringify(cart));
     };
 
-    return <button onClick={onClick}>adicionar ao carrinho</button>;
+    return (
+      <button onClick={onClick} className={styles.button}>
+        adicionar ao carrinho
+      </button>
+    );
   };
 
   render = () => {
@@ -32,7 +36,7 @@ class listProducts extends React.Component {
         </div>
       );
     return (
-      <div>
+      <div className={styles.productContainer}>
         {this.state.products.map(product => {
           const id =
             "id-" +
@@ -40,9 +44,8 @@ class listProducts extends React.Component {
               .toString(36)
               .substr(2, 16);
           return (
-            <div key={id}>
-              {this.addToCart(product.name, product.price, id)}
-              <p>{product.name}</p>
+            <div key={id} className={styles.productCard}>
+              <p className={styles.itemName}>{product.name}</p>
               <CurrencyInput
                 className={styles.currencyInput}
                 value={product.price}
@@ -50,6 +53,7 @@ class listProducts extends React.Component {
                 prefix="R$ "
                 readOnly
               />
+              {this.addToCart(product.name, product.price, id)}
             </div>
           );
         })}

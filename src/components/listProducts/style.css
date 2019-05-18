@@ -17,9 +17,8 @@
   border: 0;
 }
 .button {
-  padding: .5rem;
+  padding: 1rem;
   border-radius: .4rem;
-  font-size: 10px;
 }
 .itemName,.currencyInput {
   margin-bottom: 1rem;

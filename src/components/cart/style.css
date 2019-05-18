@@ -7,6 +7,7 @@
 .currencyInput:read-only {
   border: 0;
   text-align: right;
+  background-color: transparent;
 }
 
 .total {
@@ -14,10 +15,14 @@
 }
 
 table, tr {
-  border: 1px solid #b8b6b671;
   display: flex;
   justify-content: space-between;
 }
+
+tr:nth-child(odd){
+  background-color: #b8b6b671;
+}
+
 th {
   padding: 1rem .5rem;
   text-align: left;
@@ -27,7 +32,6 @@ td {
 }
 th:nth-child(even),td:nth-child(even){ 
   min-width: 13rem;
-  border-left: 1px solid #b8b6b671;
 }
 th:nth-child(odd),td:nth-child(odd){ 
   min-width: auto;

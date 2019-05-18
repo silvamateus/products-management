@@ -1,10 +1,12 @@
 import React from "react";
+import CurrencyInput from "react-currency-input";
+import styles from "./style.css";
 
 class listProducts extends React.Component {
   constructor() {
     super();
     this.state = {
-      products: JSON.parse(sessionStorage.getItem(products))
+      products: JSON.parse(sessionStorage.getItem("products"))
     };
   }
 
@@ -40,12 +42,14 @@ class listProducts extends React.Component {
           return (
             <div key={id}>
               {this.addToCart(product.name, product.price, id)}
-              <p>
-                <span>Nome do produto</span> {product.name}
-              </p>
-              <p>
-                <span>Preço</span> {product.price}
-              </p>
+              <p>{product.name}</p>
+              <CurrencyInput
+                className={styles.currencyInput}
+                value={product.price}
+                decimalSeparator=","
+                prefix="R$ "
+                readOnly
+              />
             </div>
           );
         })}

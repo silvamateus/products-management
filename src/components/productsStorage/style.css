@@ -11,15 +11,19 @@
   width: 100%;
 }
 .button {
-  width: 5rem;
   padding: 1rem;
   margin-top: .5rem;
-  font-size: 10px;
   align-self: flex-end;
+  border-radius: .4rem;
 }
 
 .flexContainer {
   display: flex;
   flex-direction: column;
   width: 25rem;
+}
+
+.flexContainer label {
+  margin-top: 1rem;
+  padding-bottom: .5rem;
 }

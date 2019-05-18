@@ -2,7 +2,7 @@ import React from "react";
 import CurrencyInput from "react-currency-input";
 import styles from "./style.css";
 
-const cart = () => {
+const Cart = () => {
   const products = JSON.parse(sessionStorage.getItem("cart"));
   const totalPrice = products.reduce(
     (initial, product) => initial + Number(product.price),
@@ -15,9 +15,9 @@ const cart = () => {
       </div>
     );
   return (
-    <div>
+    <div className={styles.cart}>
       {products.map(product => (
-        <div key={product.id}>
+        <div key={product.id} className={styles.cartContainer}>
           <p>{product.name}</p>
           <CurrencyInput
             className={styles.currencyInput}
@@ -28,9 +28,20 @@ const cart = () => {
           />
         </div>
       ))}
-      <p>Total: {totalPrice}</p>
+      <div className={styles.total}>
+        <p>Total: </p>
+        {
+          <CurrencyInput
+            className={styles.currencyInput}
+            value={totalPrice}
+            decimalSeparator=","
+            prefix="R$ "
+            readOnly
+          />
+        }
+      </div>
     </div>
   );
 };
 
-export default cart;
+export default Cart;

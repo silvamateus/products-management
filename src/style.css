@@ -4,3 +4,10 @@
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
+
+button {
+  text-align: center;
+  background-color: #004f8c;
+  color: #fff;
+  border: 0;
+}

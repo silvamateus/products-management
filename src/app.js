@@ -22,7 +22,7 @@ const Home = () => (
   </div>
 );
 
-const app = () => {
+const App = () => {
   return (
     <div>
       <Home />
@@ -35,4 +35,4 @@ const app = () => {
   );
 };
 
-export default app;
+export default App;

@@ -1,11 +1,13 @@
 .tooltip {
-  background-color: #53f553;
+  background-color: #1aad1a;
   position: absolute;
   bottom: 0;
+  left: 0;
   padding: 1rem;
   border-radius: .4rem;
   opacity: 0;
   transition: opacity .4s ease-in-out;
+  color: #fff;
 }
 .show {
   opacity: 1;

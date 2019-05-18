@@ -1,5 +1,6 @@
 import React from "react";
 import CurrencyInput from "react-currency-input";
+import styles from "./style.css";
 
 class productsStorage extends React.Component {
   constructor() {
@@ -42,16 +43,28 @@ class productsStorage extends React.Component {
 
   render = () => {
     return (
-      <form onSubmit={this.submit}>
-        <input type="text" value={this.state.name} onChange={this.changeName} />
-        <CurrencyInput
-          value={this.state.price}
-          onChangeEvent={this.changePrice}
-          decimalSeparator=","
-          thousandSeparator="."
-          prefix="R$"
-        />
-        <input type="submit" value="adicionar" />
+      <form onSubmit={this.submit} className={styles.form}>
+        <div className={styles.flexContainer}>
+          <label htmlFor="name">Nome do produto</label>
+          <input
+            id="name"
+            className={styles.input}
+            type="text"
+            value={this.state.name}
+            onChange={this.changeName}
+          />
+          <label htmlFor="currency">Preço</label>
+          <CurrencyInput
+            id="currency"
+            className={styles.input}
+            value={this.state.price}
+            onChangeEvent={this.changePrice}
+            decimalSeparator=","
+            thousandSeparator="."
+            prefix="R$"
+          />
+          <input type="submit" value="adicionar" className={styles.button} />
+        </div>
       </form>
     );
   };

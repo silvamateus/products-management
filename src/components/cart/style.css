@@ -3,20 +3,32 @@
   flex-direction: column;
   padding: 1rem;
 }
+
 .currencyInput:read-only {
   border: 0;
-}
-
-.cartContainer {
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem;
+  text-align: right;
 }
 
 .total {
-  display: flex;
-  width: 15rem;
-  margin: 1rem;
-  justify-content: space-between;
   align-self: flex-end;
+}
+
+table, tr {
+  border: 1px solid #b8b6b671;
+  display: flex;
+  justify-content: space-between;
+}
+th {
+  padding: 1rem .5rem;
+  text-align: left;
+}
+td {
+  padding: .5rem;
+}
+th:nth-child(even),td:nth-child(even){ 
+  min-width: 13rem;
+  border-left: 1px solid #b8b6b671;
+}
+th:nth-child(odd),td:nth-child(odd){ 
+  min-width: auto;
 }

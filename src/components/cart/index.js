@@ -15,32 +15,40 @@ const Cart = () => {
       </div>
     );
   return (
-    <div className={styles.cart}>
+    <table className={styles.cart}>
+      <tr>
+        <th>Produto</th>
+        <th>Valor</th>
+      </tr>
       {products.map(product => (
-        <div key={product.id} className={styles.cartContainer}>
-          <p>{product.name}</p>
-          <CurrencyInput
-            className={styles.currencyInput}
-            value={product.price}
-            decimalSeparator=","
-            prefix="R$ "
-            readOnly
-          />
-        </div>
+        <tr key={product.id} className={styles.cartContainer}>
+          <td>{product.name}</td>
+          <td>
+            <CurrencyInput
+              className={styles.currencyInput}
+              value={product.price}
+              decimalSeparator=","
+              prefix="R$ "
+              readOnly
+            />
+          </td>
+        </tr>
       ))}
-      <div className={styles.total}>
-        <p>Total: </p>
+      <tr className={styles.total}>
+        <td>Total: </td>
         {
-          <CurrencyInput
-            className={styles.currencyInput}
-            value={totalPrice}
-            decimalSeparator=","
-            prefix="R$ "
-            readOnly
-          />
+          <td>
+            <CurrencyInput
+              className={styles.currencyInput}
+              value={totalPrice}
+              decimalSeparator=","
+              prefix="R$ "
+              readOnly
+            />
+          </td>
         }
-      </div>
-    </div>
+      </tr>
+    </table>
   );
 };
 

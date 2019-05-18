@@ -2,10 +2,9 @@
 
 ## Products management
 
-first run `yarn install` to install dependencies
+> first run `yarn install` to install dependencies
 
 ### **Scripts**
 
-`yarn start` to start development server
-
-`yarn build` to build project
+> `yarn start` to start development server\
+> `yarn build` to build project
